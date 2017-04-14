@@ -744,7 +744,7 @@ int Adventurer(struct gameState *state)
     int cardDrawn;
     int currentPlayer = whoseTurn(state);
     int temphand[MAX_HAND];
-    int z;
+    int z = 0;
 
     while (drawntreasure < 2)
     {
@@ -753,10 +753,14 @@ int Adventurer(struct gameState *state)
             shuffle(currentPlayer, state);
         }
         drawCard(currentPlayer, state);
-        cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer] -
-                                               1]; //top card of hand is most recently drawn card.
+
+        //top card of hand is most recently drawn card.
+        cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer] - 1];
+
         if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+        {
             drawntreasure++;
+        }
         else
         {
             temphand[z] = cardDrawn;
@@ -764,12 +768,14 @@ int Adventurer(struct gameState *state)
             z++;
         }
     }
+
     while (z - 1 >= 0)
     {
-        state->discard[currentPlayer][state->discardCount[currentPlayer]++] = temphand[z -
-                                                                                       1]; // discard all cards in play that have been drawn
-        z = z - 1;
+        // discard all cards in play that have been drawn
+        state->discard[currentPlayer][state->discardCount[currentPlayer]++] = temphand[z - 1]; 
+        z - 1;
     }
+
     return 0;
 }
 
@@ -779,7 +785,7 @@ int Smithy(struct gameState *state, int handPos)
     int currentPlayer = whoseTurn(state);
 
     //+3 Cards
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < 4; i++)
     {
         drawCard(currentPlayer, state);
     }
@@ -806,7 +812,7 @@ int CouncilRoom(struct gameState *state, int handPos)
     //Each other player draws a card
     for (i = 0; i < state->numPlayers; i++)
     {
-        if (i != currentPlayer)
+        if (i == currentPlayer)
         {
             drawCard(i, state);
         }
@@ -878,7 +884,7 @@ int Feast(struct gameState *state, int choice1)
     }
 
     //Reset Hand
-    for (i = 0; i <= state->handCount[currentPlayer]; i++)
+    for (i = 0; i < state->handCount[currentPlayer]; i++)
     {
         state->hand[currentPlayer][i] = temphand[i];
         temphand[i] = -1;
