@@ -36,6 +36,7 @@ int *kingdomCards(int k1, int k2, int k3, int k4, int k5, int k6, int k7, int k8
     return k;
 }
 
+// TODO: Write unit tests
 int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed, struct gameState *state)
 {
 
@@ -203,6 +204,7 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed, struct 
     return 0;
 }
 
+// TODO: Write unit tests
 int shuffle(int player, struct gameState *state)
 {
 
@@ -236,6 +238,7 @@ int shuffle(int player, struct gameState *state)
     return 0;
 }
 
+// TODO: Write unit tests
 int playCard(int handPos, int choice1, int choice2, int choice3, struct gameState *state)
 {
     int card;
@@ -374,6 +377,7 @@ int whoseTurn(struct gameState *state)
     return state->whoseTurn;
 }
 
+// TODO: Write unit tests
 int endTurn(struct gameState *state)
 {
     int k;
@@ -738,6 +742,7 @@ int getCost(int cardNumber)
     return -1;
 }
 
+// TODO: Write unit tests
 int Adventurer(struct gameState *state)
 {
     int drawntreasure = 0;
@@ -779,6 +784,7 @@ int Adventurer(struct gameState *state)
     return 0;
 }
 
+// TODO: Write unit tests
 int Smithy(struct gameState *state, int handPos)
 {
     int i;
@@ -795,6 +801,7 @@ int Smithy(struct gameState *state, int handPos)
     return 0;
 }
 
+// TODO: Write unit tests
 int CouncilRoom(struct gameState *state, int handPos)
 {
     int currentPlayer = whoseTurn(state);
@@ -824,6 +831,7 @@ int CouncilRoom(struct gameState *state, int handPos)
     return 0;
 }
 
+// TODO: Write unit tests
 int Feast(struct gameState *state, int choice1)
 {
     int i, x;
