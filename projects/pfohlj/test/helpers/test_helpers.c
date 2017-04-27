@@ -1,6 +1,7 @@
 #include "test_helpers.h"
 #include "../../dominion/dominion.h"
 #include <string.h>
+#include <stdlib.h>
 
 // CUSTOM ASSERT FUNCTIONS
 
@@ -22,6 +23,18 @@ int AssertNotEqual(void *val1, void *val2, COMP_PTR comparator)
     return 0;
 }
 
+int AssertArraysNotEqual(void *arr1, size_t size1, void *arr2, size_t size2)
+{
+    if (size1 != size2)
+    {
+        return TRUE;
+    }
+    else
+    {
+        return memcmp(arr1, arr2, size1) != 0;
+    }
+}
+
 int AssertGreaterThan(void *val1, void *val2, COMP_PTR comparator)
 {
     if (comparator(val1, val2) > 0)
@@ -38,6 +51,16 @@ int AssertLessThan(void *val1, void *val2, COMP_PTR comparator)
         return 1;
     }
     return 0;
+}
+
+int AssertTrue(Bool expression)
+{
+    return expression == TRUE;
+}
+
+int AssertFalse(Bool expression)
+{
+    return expression == FALSE;
 }
 
 // COMPARATORS
@@ -65,4 +88,70 @@ int CompareInt(void *val1, void *val2)
     }
 
     return 1;
+}
+
+// HELPER FUNCTIONS
+
+Cards CreateKingdom(KingdomType type)
+{
+    int *cards, i;
+    int tempCards[12] = {adventurer, council_room, feast, mine, gardens, remodel,
+                         smithy, baron, mine, village, great_hall, minion};
+
+    switch (type)
+    {
+    case GoodNoVictory:
+
+        return kingdomCards(adventurer, council_room, feast, mine, remodel,
+                            smithy, village, baron, minion, steward);
+
+    case GoodWithVictory:
+
+        return kingdomCards(adventurer, council_room, great_hall, mine, remodel,
+                            smithy, village, baron, minion, gardens);
+
+    case BadDuplicate:
+
+        return kingdomCards(adventurer, adventurer, great_hall, mine, remodel,
+                            smithy, village, baron, gardens, gardens);
+
+    case BadNotEnough:
+
+        cards = malloc(8 * sizeof(int));
+        for (i = 0; i < 8; i++)
+        {
+            cards[i] = tempCards[i];
+        }
+        return cards;
+
+    case BadTooMany:
+
+        cards = malloc(12 * sizeof(int));
+        for (i = 0; i < 12; i++)
+        {
+            cards[i] = tempCards[i];
+        }
+        return cards;
+
+    case BadWithInvalidSupplyCard:
+
+        return kingdomCards(estate, copper, curse, silver, gold,
+                            smithy, duchy, baron, province, steward);
+
+    default:
+        return CreateKingdom(GoodNoVictory);
+    }
+}
+
+Cards Reset(Cards cards, KingdomType type, GameState *state, GameState *blank)
+{
+    if (cards != NULL)
+    {
+        free(cards);
+        cards = NULL;
+    }
+
+    memcpy(state, blank, sizeof(GameState));
+
+    return CreateKingdom(type);
 }
