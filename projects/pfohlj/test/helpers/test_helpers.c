@@ -155,3 +155,76 @@ Cards Reset(Cards cards, KingdomType type, GameState *state, GameState *blank)
 
     return CreateKingdom(type);
 }
+
+Cards CreateDeck(DeckType deck)
+{   
+    int i;
+    Cards tempDeck;
+    Cards tempCards = CreateKingdom(GoodNoVictory);
+
+    switch (deck)
+    {
+    case StartingDeck:
+
+        tempDeck = malloc(10 * sizeof(Card));
+
+        for (i = 0; i < 3; i++)
+        {
+            tempDeck[i] = estate;
+        }
+        for (i = 3; i < 10; i++)
+        {
+            tempDeck[i] = copper;
+        }
+
+        free(tempCards);
+        return tempDeck;
+
+    case SmallDeck:
+
+        tempDeck = malloc(20 * sizeof(Card));
+
+        for (i = 0; i < 10; i++)
+        {
+            tempDeck[i] = tempCards[i];
+            tempDeck[i+10] = tempCards[i];
+        }
+
+        free(tempCards);
+        return tempDeck;
+
+    case MediumDeck:
+
+        tempDeck = malloc(30 * sizeof(Card));
+
+        for (i = 0; i < 10; i++)
+        {
+            tempDeck[i] = tempCards[i];
+            tempDeck[i+10] = tempCards[i];
+            tempDeck[i+20] = tempCards[i];
+        }
+
+        free(tempCards);
+        return tempDeck;
+
+    case LargeDeck:
+
+        tempDeck = malloc(30 * sizeof(Card));
+
+        for (i = 0; i < 10; i++)
+        {
+            tempDeck[i] = tempCards[i];
+            tempDeck[i+10] = tempCards[i];
+            tempDeck[i+20] = tempCards[i];
+            tempDeck[i+30] = tempCards[i];
+        }
+
+        free(tempCards);
+        return tempDeck;
+
+    default:
+
+        free(tempCards);
+        return CreateDeck(StartingDeck);
+    }
+}

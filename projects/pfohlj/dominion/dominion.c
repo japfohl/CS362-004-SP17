@@ -203,7 +203,6 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed, struct 
     return 0;
 }
 
-// TODO: Write unit tests
 int shuffle(int player, struct gameState *state)
 {
 
@@ -237,7 +236,6 @@ int shuffle(int player, struct gameState *state)
     return 0;
 }
 
-// TODO: Write unit tests
 int playCard(int handPos, int choice1, int choice2, int choice3, struct gameState *state)
 {
     int card;
@@ -345,6 +343,7 @@ int supplyCount(int card, struct gameState *state)
     return state->supplyCount[card];
 }
 
+// TODO: Write unit tests
 int fullDeckCount(int player, int card, struct gameState *state)
 {
     int i;
@@ -376,7 +375,6 @@ int whoseTurn(struct gameState *state)
     return state->whoseTurn;
 }
 
-// TODO: Write unit tests
 int endTurn(struct gameState *state)
 {
     int k;
@@ -422,6 +420,7 @@ int endTurn(struct gameState *state)
     return 0;
 }
 
+// TODO: Write unit tests
 int isGameOver(struct gameState *state)
 {
     int i;

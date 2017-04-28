@@ -37,10 +37,15 @@ unittestresult.out: ../test/functions/unittest1.c dominion.c rngs.c ../test/help
 	./unittest1 >> tests.out
 	gcov dominion.c >> tests.out
 
+	echo "unittest2.c:" >> tests.out
+	gcc -o unittest2 ../test/functions/unittest2.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
+	./unittest2 >> tests.out
+	gcov dominion.c >> tests.out
+
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
 all: playdom player testDrawCard testBuyCard badTestDrawCard
 
 clean:
-	rm -f *.o playdom.exe playdom test.exe test player player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.out testDrawCard unittest1
+	rm -f *.o playdom.exe playdom test.exe test player player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so *.out testDrawCard unittest*
