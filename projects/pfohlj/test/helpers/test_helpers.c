@@ -138,6 +138,11 @@ Cards CreateKingdom(KingdomType type)
         return kingdomCards(estate, copper, curse, silver, gold,
                             smithy, duchy, baron, province, steward);
 
+    case CountKingdom:
+
+        return kingdomCards(copper, copper, copper, copper, copper,
+                            smithy, duchy, baron, adventurer, village);
+
     default:
         return CreateKingdom(GoodNoVictory);
     }
@@ -160,7 +165,18 @@ Cards CreateDeck(DeckType deck)
 {   
     int i;
     Cards tempDeck;
-    Cards tempCards = CreateKingdom(GoodNoVictory);
+    Cards tempCards;
+    
+    if (deck == SmallCountDeck
+        || deck == MediumCountDeck
+        || deck == LargeCountDeck)
+    {
+        tempCards = CreateKingdom(CountKingdom);
+    }
+    else
+    {
+        tempCards = CreateKingdom(GoodNoVictory);
+    }
 
     switch (deck)
     {
@@ -181,6 +197,7 @@ Cards CreateDeck(DeckType deck)
         return tempDeck;
 
     case SmallDeck:
+    case SmallCountDeck:
 
         tempDeck = malloc(20 * sizeof(Card));
 
@@ -194,6 +211,7 @@ Cards CreateDeck(DeckType deck)
         return tempDeck;
 
     case MediumDeck:
+    case MediumCountDeck:    
 
         tempDeck = malloc(30 * sizeof(Card));
 
@@ -208,6 +226,7 @@ Cards CreateDeck(DeckType deck)
         return tempDeck;
 
     case LargeDeck:
+    case LargeCountDeck:
 
         tempDeck = malloc(30 * sizeof(Card));
 

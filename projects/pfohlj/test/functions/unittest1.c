@@ -45,8 +45,6 @@ void TestInitializeGame()
     blankState = newGame();
     memcpy(blankState, game, sizeof(GameState));
 
-    printf("BEGIN TESTS: initializeGame() from \"dominion.c\"\n\n");
-
     // TEST: states copied correctly
     AssertEqual(game, blankState, CompareGameState)
         ? printf("PASS: Testing states copied successfully.\n")

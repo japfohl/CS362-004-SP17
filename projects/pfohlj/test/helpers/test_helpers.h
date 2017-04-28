@@ -12,6 +12,10 @@
 #define MEDIUM_DECK_SIZE (30 * sizeof(Card))
 #define LARGE_DECK_SIZE (40 * sizeof(Card))
 
+#define SMALL 20
+#define MEDIUM 30
+#define LARGE 40
+
 // ENUMS
 
 enum KingdomType
@@ -21,15 +25,19 @@ enum KingdomType
     BadDuplicate,
     BadNotEnough,
     BadTooMany,
-    BadWithInvalidSupplyCard
+    BadWithInvalidSupplyCard,
+    CountKingdom
 };
 
 enum DeckType
 {
     StartingDeck = 0,
     SmallDeck,
+    SmallCountDeck,
     MediumDeck,
-    LargeDeck
+    MediumCountDeck,
+    LargeDeck,
+    LargeCountDeck
 };
 
 // TYPEDEFS

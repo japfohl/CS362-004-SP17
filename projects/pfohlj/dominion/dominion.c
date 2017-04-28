@@ -343,7 +343,6 @@ int supplyCount(int card, struct gameState *state)
     return state->supplyCount[card];
 }
 
-// TODO: Write unit tests
 int fullDeckCount(int player, int card, struct gameState *state)
 {
     int i;
