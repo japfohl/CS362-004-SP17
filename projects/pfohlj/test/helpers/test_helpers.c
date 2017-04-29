@@ -110,6 +110,11 @@ Cards CreateKingdom(KingdomType type)
         return kingdomCards(adventurer, council_room, feast, mine, remodel,
                             gardens, village, baron, minion, steward);
 
+    case GoodNoCouncilRoom:
+
+        return kingdomCards(adventurer, smithy, feast, mine, remodel,
+                            gardens, village, baron, minion, steward);
+
     case GoodWithVictory:
 
         return kingdomCards(adventurer, council_room, great_hall, mine, remodel,
@@ -183,6 +188,10 @@ Cards CreateDeck(DeckType deck)
     {
         tempCards = CreateKingdom(GoodNoSmithy);
     }
+    else if (deck == LargeNoCouncilRoom)
+    {
+        tempCards = CreateKingdom(GoodNoCouncilRoom);
+    }
     else
     {
         tempCards = CreateKingdom(GoodNoVictory);
@@ -237,6 +246,7 @@ Cards CreateDeck(DeckType deck)
 
     case LargeDeck:
     case LargeNoSmithy:
+    case LargeNoCouncilRoom:
     case LargeCountDeck:
     case WithTreasures:
     case WithoutTreasures:

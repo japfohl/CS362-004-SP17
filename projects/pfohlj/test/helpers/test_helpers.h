@@ -8,6 +8,7 @@
 #define FALSE 0
 #define TRUE 1
 
+#define START_HAND_SIZE (5 * sizeof(Card))
 #define SMALL_DECK_SIZE (20 * sizeof(Card))
 #define MEDIUM_DECK_SIZE (30 * sizeof(Card))
 #define LARGE_DECK_SIZE (40 * sizeof(Card))
@@ -22,6 +23,7 @@ enum KingdomType
 {
     GoodNoVictory = 0,
     GoodNoSmithy,
+    GoodNoCouncilRoom,
     GoodWithVictory,
     BadDuplicate,
     BadNotEnough,
@@ -39,6 +41,7 @@ enum DeckType
     MediumCountDeck,
     LargeDeck,
     LargeNoSmithy,
+    LargeNoCouncilRoom,
     LargeCountDeck,
     WithTreasures,
     WithoutTreasures

@@ -71,6 +71,12 @@ unittestresult.out: ../test/functions/unittest1.c dominion.c rngs.c ../test/help
 	echo "\nCoverage:\n" >> tests.out
 	gcov -b dominion.c >> tests.out
 
+	echo "TESTS FOR: CouncilRoom():\n" >> tests.out
+	gcc -o cardtest3 ../test/cards/cardtest3.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
+	./cardtest3 >> tests.out
+	echo "\nCoverage:\n" >> tests.out
+	gcov -b dominion.c >> tests.out
+
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 

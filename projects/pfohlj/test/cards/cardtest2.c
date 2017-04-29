@@ -1,10 +1,8 @@
-// Smithy
-
 /*****************************************************************************************
 * NAME:         Joseph A Pfohl
 * DATE:         4/26/2017
 * ASSIGNMENT:   Assignment #3 - Unit Tests
-* DESCRIPTION:  Unit tests for
+* DESCRIPTION:  Unit tests for Smithy()
 *****************************************************************************************/
 
 #include "../../dominion/dominion.h"

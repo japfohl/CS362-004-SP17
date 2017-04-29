@@ -795,7 +795,6 @@ int Smithy(struct gameState *state, int handPos)
     return 0;
 }
 
-// TODO: Write unit tests
 int CouncilRoom(struct gameState *state, int handPos)
 {
     int currentPlayer = whoseTurn(state);
