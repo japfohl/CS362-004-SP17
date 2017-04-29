@@ -21,6 +21,7 @@
 enum KingdomType
 {
     GoodNoVictory = 0,
+    GoodNoSmithy,
     GoodWithVictory,
     BadDuplicate,
     BadNotEnough,
@@ -37,6 +38,7 @@ enum DeckType
     MediumDeck,
     MediumCountDeck,
     LargeDeck,
+    LargeNoSmithy,
     LargeCountDeck,
     WithTreasures,
     WithoutTreasures

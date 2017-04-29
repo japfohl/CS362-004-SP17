@@ -738,7 +738,6 @@ int getCost(int cardNumber)
     return -1;
 }
 
-// TODO: Write unit tests
 int Adventurer(struct gameState *state)
 {
     int drawntreasure = 0;
@@ -780,7 +779,6 @@ int Adventurer(struct gameState *state)
     return 0;
 }
 
-// TODO: Write unit tests
 int Smithy(struct gameState *state, int handPos)
 {
     int i;
