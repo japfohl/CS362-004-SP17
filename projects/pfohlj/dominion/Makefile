@@ -30,23 +30,31 @@ runtests: testDrawCard
 	cat dominion.c.gcov >> unittestresult.out
 
 unittestresult.out: ../test/functions/unittest1.c dominion.c rngs.c ../test/helpers/test_helpers.c
-	echo "TESTS FOR: unittest1.c:\n" > tests.out
+	echo "TESTING FILE: dominion.c\n" > tests.out
+
+	echo "TESTS FOR: initializeGame():\n" >> tests.out
 	gcc -o unittest1 ../test/functions/unittest1.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
 	./unittest1 >> tests.out
 	echo "\nCoverage:\n" >> tests.out
-	gcov dominion.c >> tests.out
+	gcov -b dominion.c >> tests.out
 
-	echo "TESTS FOR: unittest2.c:\n" >> tests.out
+	echo "TESTS FOR: shuffle():\n" >> tests.out
 	gcc -o unittest2 ../test/functions/unittest2.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
 	./unittest2 >> tests.out
 	echo "\nCoverage:\n" >> tests.out
-	gcov dominion.c >> tests.out
+	gcov -b dominion.c >> tests.out
 
-	echo "TESTS FOR: unittest3.c:\n" >> tests.out
+	echo "TESTS FOR: fullDeckCount():\n" >> tests.out
 	gcc -o unittest3 ../test/functions/unittest3.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
 	./unittest3 >> tests.out
 	echo "\nCoverage:\n" >> tests.out
-	gcov dominion.c >> tests.out
+	gcov -b dominion.c >> tests.out
+
+	echo "TESTS FOR: isGameOver():\n" >> tests.out
+	gcc -o unittest4 ../test/functions/unittest4.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
+	./unittest4 >> tests.out
+	echo "\nCoverage:\n" >> tests.out
+	gcov -b dominion.c >> tests.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
