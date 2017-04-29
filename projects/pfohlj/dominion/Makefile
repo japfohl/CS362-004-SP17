@@ -56,6 +56,15 @@ unittestresult.out: ../test/functions/unittest1.c dominion.c rngs.c ../test/help
 	echo "\nCoverage:\n" >> tests.out
 	gcov -b dominion.c >> tests.out
 
+	echo "TESTS FOR: Adventurer():\n" >> tests.out
+	echo "Tests currently un-runnable due to infinite loop bug introduced in assignment 2" >> tests.out
+	echo "I tested this after fixing the bug and the tests were runnable but am leaving the bug per the requirements." >>  tests.out
+	echo "Un-comment tests once infinite loop found and fixed\n" >> tests.out
+	# gcc -o cardtest1 ../test/cards/cardtest1.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
+	# ./cardtest1 >> tests.out
+	# echo "\nCoverage:\n" >> tests.out
+	# gcov -b dominion.c >> tests.out
+
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 

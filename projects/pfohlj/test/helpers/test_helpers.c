@@ -169,7 +169,8 @@ Cards CreateDeck(DeckType deck)
     
     if (deck == SmallCountDeck
         || deck == MediumCountDeck
-        || deck == LargeCountDeck)
+        || deck == LargeCountDeck
+        || deck == WithTreasures)
     {
         tempCards = CreateKingdom(CountKingdom);
     }
@@ -227,8 +228,10 @@ Cards CreateDeck(DeckType deck)
 
     case LargeDeck:
     case LargeCountDeck:
+    case WithTreasures:
+    case WithoutTreasures:
 
-        tempDeck = malloc(30 * sizeof(Card));
+        tempDeck = malloc(40 * sizeof(Card));
 
         for (i = 0; i < 10; i++)
         {
@@ -246,4 +249,47 @@ Cards CreateDeck(DeckType deck)
         free(tempCards);
         return CreateDeck(StartingDeck);
     }
+}
+
+int DeckAndDiscardCount(Card card, Player player, GameState *game)
+{
+    // variable declarations
+    int i, count = 0;
+
+    // find the deck count for card
+    for (i = 0; i < game->deckCount[player]; i++)
+    {
+        if (game->deck[player][i] == card)
+        {
+            count++;
+        }
+    }
+
+    // find the discard count for the card
+    for (i = 0; i < game->discardCount[player]; i++)
+    {
+        if (game->discard[player][i] == card)
+        {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+int HandCount(Card card, Player player, GameState *game)
+{
+    // variables
+    int i, count = 0;
+
+    // find the hand count
+    for (i = 0; i < game->handCount[player]; i++)
+    {
+        if (game->hand[player][i] == card)
+        {
+            count++;
+        }
+    }
+
+    return count;
 }

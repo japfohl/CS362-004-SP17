@@ -37,19 +37,22 @@ enum DeckType
     MediumDeck,
     MediumCountDeck,
     LargeDeck,
-    LargeCountDeck
+    LargeCountDeck,
+    WithTreasures,
+    WithoutTreasures
 };
 
 // TYPEDEFS
 
+typedef struct gameState GameState;
 typedef enum KingdomType KingdomType;
 typedef enum DeckType DeckType;
 typedef int (*COMP_PTR)(void *val1, void *val2);
 typedef int (*ARR_COMP)(void *arr1, int size1, void *arr2, int size2);
-typedef struct gameState GameState;
 typedef int* Cards;
 typedef int Bool;
 typedef int Card;
+typedef int Player;
 
 // GENERIC ASSERTION FUNCTIONS
 
@@ -71,5 +74,7 @@ int CompareInt(void *val1, void *val2);
 Cards CreateKingdom(KingdomType type);
 Cards Reset(Cards cards, KingdomType type, GameState *state, GameState *blank);
 Cards CreateDeck(DeckType deck);
+int DeckAndDiscardCount(Card card, Player player, GameState *game);
+int HandCount(Card card, Player player, GameState *game);
 
 #endif
