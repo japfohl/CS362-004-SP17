@@ -25,7 +25,7 @@ int ONE = 1;
 
 // MAIN
 
-int main(int argc, char ** argv)
+int main(int argc, char **argv)
 {
     TestAdventurer();
     return 0;
@@ -55,7 +55,7 @@ void TestAdventurer()
     kingdom = CreateKingdom(GoodNoVictory);
 
     // create deck w/ size 40 and 20 treasures
-    testDeck = CreateDeck(WithTreasures); 
+    testDeck = CreateDeck(WithTreasures);
 
     // initialize the state
     initializeGame(2, kingdom, 42, game);
