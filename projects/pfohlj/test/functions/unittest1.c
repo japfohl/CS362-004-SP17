@@ -2,7 +2,7 @@
 * NAME:         Joseph A Pfohl
 * DATE:         4/26/2017
 * ASSIGNMENT:   Assignment #3 - Unit Tests
-* DESCRIPTION:  Unit tests for the initializeGame function from dominion.c
+* DESCRIPTION:  Unit tests for the initializeGame() function from dominion.c
 *****************************************************************************************/
 
 #include "../../dominion/dominion.h"

@@ -824,7 +824,6 @@ int CouncilRoom(struct gameState *state, int handPos)
     return 0;
 }
 
-// TODO: Write unit tests
 int Feast(struct gameState *state, int choice1)
 {
     int i, x;

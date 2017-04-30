@@ -1,3 +1,10 @@
+/*****************************************************************************************
+* NAME: Joseph A Pfohl
+* DATE: 4/30/2017
+* ASSIGNMENT: Assignment #3
+* DESCRIPTION: Helper functions for writing unit tests.
+*****************************************************************************************/
+
 #include "test_helpers.h"
 #include "../../dominion/dominion.h"
 #include <string.h>

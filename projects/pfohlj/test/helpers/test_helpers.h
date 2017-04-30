@@ -1,3 +1,10 @@
+/*****************************************************************************************
+* NAME: Joseph A Pfohl
+* DATE: 4/30/2017
+* ASSIGNMENT: Assignment #3
+* DESCRIPTION: Header file for helper functions.  Includes important typedefs and defines.
+*****************************************************************************************/
+
 #ifndef TEST_HELPERS_H
 #define TEST_HELPERS_H
 
