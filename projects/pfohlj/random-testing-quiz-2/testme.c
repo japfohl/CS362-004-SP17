@@ -3,16 +3,30 @@
 #include<stdlib.h>
 #include<time.h>
 
+#define MIN_CHAR 32
+#define MAX_CHAR 126
+#define MIN_STRING 97
+#define MAX_STRING 122
+
 char inputChar()
 {
-    // TODO: rewrite this function
-    return ' ';
+    return (char)(rand() % (MAX_CHAR + 1 - MIN_CHAR) + MIN_CHAR);
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
-    return "";
+    int i;
+
+    char *temp = (char*)malloc(6 * sizeof(char));
+
+    for (i = 0; i < 5; i++)
+    {
+        temp[i] = (char)(rand() % (MAX_STRING + 1 - MIN_STRING) + MIN_STRING);
+    }
+
+    temp[i] = '\0';
+
+    return temp;
 }
 
 void testme()
@@ -44,6 +58,10 @@ void testme()
     {
       printf("error ");
       exit(200);
+    }
+    else
+    {
+      free(s);
     }
   }
 }
