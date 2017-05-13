@@ -7,8 +7,10 @@
 
 #include "test_helpers.h"
 #include "../../dominion/dominion.h"
+#include "../../dominion/rngs.h"
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 
 // CUSTOM ASSERT FUNCTIONS
 
@@ -98,6 +100,20 @@ int CompareInt(void *val1, void *val2)
 }
 
 // HELPER FUNCTIONS
+
+GameState *CreateRandomGameState()
+{   
+    size_t i;
+
+    GameState *tempState = (GameState*)malloc(sizeof(GameState));
+
+    for (i = 0; i < sizeof(GameState); i++)
+    {
+        ((char*)&tempState)[i] = floor(Random() * 256);
+    }
+
+    return tempState;
+}
 
 Cards CreateKingdom(KingdomType type)
 {
@@ -319,4 +335,56 @@ int HandCount(Card card, Player player, GameState *game)
     }
 
     return count;
+}
+
+int TreasureCount(CardLocation loc, GameState *s, Player p)
+{
+    int i, sum = 0;
+
+    switch (loc)
+    {
+    case Hand:
+
+        for (i = 0; i < s->handCount[p]; i++)
+        {
+            if (IsTreasure(s->hand[p][i]))
+            {
+                sum++;
+            }
+        }
+
+        return sum;
+
+    case Deck:
+
+        for (i = 0; i < s->deckCount[p]; i++)
+        {
+            if (IsTreasure(s->deck[p][i]))
+            {
+                sum++;
+            }
+        }
+
+        return sum;
+
+    case Discard:
+
+        for (i = 0; i < s->discardCount[p]; i++)
+        {
+            if (IsTreasure(s->discard[p][i]))
+            {
+                sum++;
+            }
+        }
+
+        return sum;
+
+    default:
+        return -1;
+    }
+}
+
+Bool IsTreasure(Card card)
+{
+    return card == gold || card == silver || card == copper;
 }
