@@ -24,7 +24,7 @@ int main()
     SelectStream(0);
     PutSeed(42);
 
-    for (i = 0; i < 50000; i++)
+    for (i = 0; i < 2000; i++)
     {
         RandomTestAdventurer();
     }
