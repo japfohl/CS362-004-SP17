@@ -30,58 +30,58 @@ runtests: testDrawCard
 	cat dominion.c.gcov >> unittestresult.out
 
 unittestresult.out: ../test/functions/unittest1.c dominion.c rngs.c ../test/helpers/test_helpers.c
-	echo "TESTING FILE: dominion.c\n" > unittestresults.out
+	echo "TESTING FILE: dominion.c\n" > unittestresult.out
 
-	echo "TESTS FOR: initializeGame():\n" >> unittestresults.out
+	echo "TESTS FOR: initializeGame():\n" >> unittestresult.out
 	gcc -o unittest1 ../test/functions/unittest1.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
-	./unittest1 >> unittestresults.out
-	echo "\nCoverage:\n" >> unittestresults.out
-	gcov -b dominion.c >> unittestresults.out
+	./unittest1 >> unittestresult.out
+	echo "\nCoverage:\n" >> unittestresult.out
+	gcov -b dominion.c >> unittestresult.out
 
-	echo "TESTS FOR: shuffle():\n" >> unittestresults.out
+	echo "TESTS FOR: shuffle():\n" >> unittestresult.out
 	gcc -o unittest2 ../test/functions/unittest2.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
-	./unittest2 >> unittestresults.out
-	echo "\nCoverage:\n" >> unittestresults.out
-	gcov -b dominion.c >> unittestresults.out
+	./unittest2 >> unittestresult.out
+	echo "\nCoverage:\n" >> unittestresult.out
+	gcov -b dominion.c >> unittestresult.out
 
-	echo "TESTS FOR: fullDeckCount():\n" >> unittestresults.out
+	echo "TESTS FOR: fullDeckCount():\n" >> unittestresult.out
 	gcc -o unittest3 ../test/functions/unittest3.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
-	./unittest3 >> unittestresults.out
-	echo "\nCoverage:\n" >> unittestresults.out
-	gcov -b dominion.c >> unittestresults.out
+	./unittest3 >> unittestresult.out
+	echo "\nCoverage:\n" >> unittestresult.out
+	gcov -b dominion.c >> unittestresult.out
 
-	echo "TESTS FOR: isGameOver():\n" >> unittestresults.out
+	echo "TESTS FOR: isGameOver():\n" >> unittestresult.out
 	gcc -o unittest4 ../test/functions/unittest4.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
-	./unittest4 >> unittestresults.out
-	echo "\nCoverage:\n" >> unittestresults.out
-	gcov -b dominion.c >> unittestresults.out
+	./unittest4 >> unittestresult.out
+	echo "\nCoverage:\n" >> unittestresult.out
+	gcov -b dominion.c >> unittestresult.out
 
-	echo "TESTS FOR: Adventurer():\n" >> unittestresults.out
-	echo "Tests currently un-runnable due to infinite loop bug introduced in assignment 2" >> unittestresults.out
-	echo "I tested this after fixing the bug and the tests were runnable but am leaving the bug per the requirements." >>  unittestresults.out
-	echo "Un-comment tests once infinite loop found and fixed\n" >> unittestresults.out
-	# gcc -o cardtest1 ../test/cards/cardtest1.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
-	# ./cardtest1 >> unittestresults.out
-	# echo "\nCoverage:\n" >> unittestresults.out
-	# gcov -b dominion.c >> unittestresults.out
+	echo "TESTS FOR: Adventurer():\n" >> unittestresult.out
+	echo "Tests currently un-runnable due to infinite loop bug introduced in assignment 2" >> unittestresult.out
+	echo "I tested this after fixing the bug and the tests were runnable but am leaving the bug per the requirements." >>  unittestresult.out
+	echo "Un-comment tests once infinite loop found and fixed\n" >> unittestresult.out
+	gcc -o cardtest1 ../test/cards/cardtest1.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
+	./cardtest1 >> unittestresult.out
+	echo "\nCoverage:\n" >> unittestresult.out
+	gcov -b dominion.c >> unittestresult.out
 
-	echo "TESTS FOR: Smithy():\n" >> unittestresults.out
+	echo "TESTS FOR: Smithy():\n" >> unittestresult.out
 	gcc -o cardtest2 ../test/cards/cardtest2.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
-	./cardtest2 >> unittestresults.out
-	echo "\nCoverage:\n" >> unittestresults.out
-	gcov -b dominion.c >> unittestresults.out
+	./cardtest2 >> unittestresult.out
+	echo "\nCoverage:\n" >> unittestresult.out
+	gcov -b dominion.c >> unittestresult.out
 
-	echo "TESTS FOR: CouncilRoom():\n" >> unittestresults.out
+	echo "TESTS FOR: CouncilRoom():\n" >> unittestresult.out
 	gcc -o cardtest3 ../test/cards/cardtest3.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
-	./cardtest3 >> unittestresults.out
-	echo "\nCoverage:\n" >> unittestresults.out
-	gcov -b dominion.c >> unittestresults.out
+	./cardtest3 >> unittestresult.out
+	echo "\nCoverage:\n" >> unittestresult.out
+	gcov -b dominion.c >> unittestresult.out
 
-	echo "TESTS FOR: Feast():\n" >> unittestresults.out
+	echo "TESTS FOR: Feast():\n" >> unittestresult.out
 	gcc -o cardtest4 ../test/cards/cardtest4.c dominion.c rngs.c ../test/helpers/test_helpers.c $(CFLAGS)
-	./cardtest4 >> unittestresults.out
-	echo "\nCoverage:\n" >> unittestresults.out
-	gcov -b dominion.c >> unittestresults.out
+	./cardtest4 >> unittestresult.out
+	echo "\nCoverage:\n" >> unittestresult.out
+	gcov -b dominion.c >> unittestresult.out
 
 randomtestcard1.out:
 	echo "TESTING Smithy() implementation in dominion.c\n" > randomtestcard1.out
