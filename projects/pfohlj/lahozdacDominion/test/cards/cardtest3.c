@@ -1,8 +1,8 @@
 /*****************************************************************************************
 * NAME:         Joseph A Pfohl
-* DATE:         4/26/2017
-* ASSIGNMENT:   Assignment #3 - Unit Tests
-* DESCRIPTION:  Unit tests for CouncilRoom()
+* DATE:         5/26/2017
+* ASSIGNMENT:   Assignment #5 - Unit Tests for partner's code
+* DESCRIPTION:  Unit tests for playCouncil_Room()
 *****************************************************************************************/
 
 #include "../../dominion/dominion.h"
@@ -93,15 +93,18 @@ void Test()
 
     AssertTrue(newHandSizes[0] == (startHandSizes[0] + 3))
         ? printf("PASS: Player handsize increased by 3.\n")
-        : printf("** FAIL: Player handsize did not increase by 3.\n");
+        : printf("** FAIL: expected handsize to be %d but it was %d.\n",
+            (startHandSizes[0] + 3), newHandSizes[0]);
 
     AssertTrue(newDeckSizes[0] == (startDeckSizes[0] - 4))
         ? printf("PASS: decksize decreased by 4.\n")
-        : printf("** FAIL: deck size did not decrease by 4.\n");
+        : printf("** FAIL: expected deck size to be %d but it was %d.\n",
+            (startDeckSizes[0] - 4), newDeckSizes[0]);
 
     AssertTrue(newNumBuys == (startNumBuys + 1))
         ? printf("PASS: buys increased by 1.\n")
-        : printf("** FAIL: buys did not increase by 1.\n");
+        : printf("** FAIL: expected numBuys to be %d but it was %d.\n",
+            (startNumBuys + 1), newNumBuys);
 
     AssertTrue(HandCount(council_room, 0, state) == 0)
         ? printf("PASS: Player has no Council Rooms remaining in hand (started with one, played one).\n")

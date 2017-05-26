@@ -1,8 +1,8 @@
 /*****************************************************************************************
 * NAME:         Joseph A Pfohl
-* DATE:         4/26/2017
-* ASSIGNMENT:   Assignment #3 - Unit Tests
-* DESCRIPTION:  Unit tests for Smithy()
+* DATE:         5/26/2017
+* ASSIGNMENT:   Assignment #5 - Unit Tests for partner's code
+* DESCRIPTION:  Unit tests for playSmithy()
 *****************************************************************************************/
 
 #include "../../dominion/dominion.h"
@@ -82,7 +82,8 @@ void TestSmithy()
 
     AssertTrue(newHandSize == (startHandSize + 2))
         ? printf("PASS: Player handsize increased by 2.\n")
-        : printf("** FAIL: Player handsize did not increase by 2.\n");
+        : printf("** FAIL: expected handsize to be %d but it was %d.\n",
+            (startHandSize + 2), newHandSize);
 
     AssertTrue(newDeckSize == (startDeckSize - 3))
         ? printf("PASS: decksize decreased by 3.\n")
@@ -115,7 +116,8 @@ void TestSmithy()
 
     AssertTrue(newHandSize == (startHandSize + 10))
         ? printf("PASS: Player handsize increased by 10.\n")
-        : printf("** FAIL: Player handsize did not increase by 10.\n");
+        : printf("** FAIL: expected handsize to be %d but it was %d.\n",
+            (startHandSize + 10), newHandSize);
 
     AssertTrue(newDeckSize == (startDeckSize - 15))
         ? printf("PASS: decksize decreased by 15.\n")
@@ -148,7 +150,8 @@ void TestSmithy()
 
     AssertTrue(newHandSize == (startHandSize - 1))
         ? printf("PASS: Player handsize decreased by 1 (no cards to draw).\n")
-        : printf("** FAIL: Player handsize did not decrease by 1 (change in some other way).\n");
+        : printf("** FAIL: expected handsize to be %d but it was %d.\n",
+            (startHandSize - 1), newHandSize);
 
     AssertTrue(newDeckSize == 0)
         ? printf("PASS: decksize did not change.\n")

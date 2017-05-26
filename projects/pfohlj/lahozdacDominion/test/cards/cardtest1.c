@@ -1,8 +1,8 @@
 /*****************************************************************************************
 * NAME:         Joseph A Pfohl
-* DATE:         4/26/2017
-* ASSIGNMENT:   Assignment #3 - Unit Tests
-* DESCRIPTION:  Unit tests for Adventurer() card implementation
+* DATE:         5/26/2017
+* ASSIGNMENT:   Assignment #5 - Testing partner's code
+* DESCRIPTION:  Unit tests for playAdventurer() card implementation
 *****************************************************************************************/
 
 #include "../../dominion/dominion.h"

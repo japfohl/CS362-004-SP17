@@ -1,7 +1,7 @@
 /*****************************************************************************************
 * NAME:         Joseph A Pfohl
-* DATE:         4/26/2017
-* ASSIGNMENT:   Assignment #3 - Unit Tests
+* DATE:         5/26/2017
+* ASSIGNMENT:   Assignment #5 - Unit Tests for partner's code
 * DESCRIPTION:  Unit tests for the shuffle() function from dominion.c
 *****************************************************************************************/
 

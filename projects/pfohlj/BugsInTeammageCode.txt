@@ -1,0 +1,100 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Bug #1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Title: Smithy leaves extra cards in hand  
+
+Class: Implementation Error
+
+Date:           05/26/2017
+Reported By:    Joseph A Pfohl
+Email:          pfohlj@oregonstate.edu
+
+Product:    Smithy card implementation  Version: N/A
+Platform:   Mac, OSX                    Version: Sierra 10.12.4  
+
+Is it reproducible: Yes
+
+Description
+===========
+
+After calling the playSmithy() function, the number of cards left in a players hand is 
+greater than it should be by a factor of n, where n is the number of times the function
+has been called.
+
+Steps to Produce/Reproduce
+--------------------------
+
+1. Create a new game with a valid struct gameState, using the initializeGame() function.
+2. Get (or explicitliy set and save) the position of Smithy in hand.
+3. Call the playSmithy() function.
+
+Expected Results
+----------------
+
+The number of cards in the active player's hand should be equal to the previous number +
+2.  The player should place Smithy in the played cards pile and then should gain three
+cards from their deck to their hand for a net gain of 2.
+
+Actual Results
+--------------
+
+The number of cards in the player's hand is equal to the starting number + 3.
+
+Cause
+-----
+
+The code that is supposed to discard a card from the player's hand appears to be commented
+out.  This code can be found on line 1335 of dominion.c.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Bug #2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Title: Feast implementation infinite loops 
+
+Class: Serious Bug
+
+Date:           05/26/2017
+Reported By:    Joseph A Pfohl
+Email:          pfohlj@oregonstate.edu
+
+Product:    Feast card implementation   Version: N/A
+Platform:   Mac, OSX                    Version: Sierra 10.12.4     
+
+Is it reproducible: Yes
+
+Description
+===========
+
+Any time the Feast implementation is called where the player's choice is a) a card with 
+a value > 5 or b) a card where the supply count is <= 0, the method gets trapped in an 
+infinite loop.  
+
+Steps to Produce/Reproduce
+--------------------------
+
+1. Set up the game resulting in a valid game state.
+2a) Call the Feast implementation where choice 1 is a card with a value > 5 (Province for
+    example).
+
+OR
+
+2b-1) Manually set a pile in the supply to be empty (<= 0) (make sure cost <= 5)
+2b-2) Call the feast implementation trying to gain from the empty pile.
+
+Expected Results
+----------------
+
+Should not allow the player to gain and should exit the function with an error value (-1),
+resetting all incoming values to their original.
+
+Actual Results
+--------------
+
+Player gets trapped in an infinite loop.
+
+Cause
+-----
+
+Lines 785 - 792 deal with the condition where there are no cards of the choice in the
+state and lines 793 - 801 deal with the condition where the player is tring to gain a card
+with a cost > 5.  Each of these blocks of code contain no code other than conditional 
+debugging print statements and because of this, provide no way of exiting the function.

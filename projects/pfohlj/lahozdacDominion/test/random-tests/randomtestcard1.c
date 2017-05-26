@@ -1,9 +1,9 @@
 /*****************************************************************************************
 *        NAME:  Joseph A Pfohl
-*        DATE:  5/12/2016
+*        DATE:  5/26/2016
 *       CLASS:  CS362-400 Software Engineering II
-*  ASSIGNMENT:  Assignment #4 - Random Testing
-* DESCRIPTION:  Random tests for Smithy card implementation.
+*  ASSIGNMENT:  Assignment #5 - Random Testing for partner's code
+* DESCRIPTION:  Random tests for playSmithy() card implementation.
 *****************************************************************************************/
 
 #include "../../dominion/dominion.h"

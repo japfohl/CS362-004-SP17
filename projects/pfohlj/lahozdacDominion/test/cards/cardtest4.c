@@ -1,8 +1,8 @@
 /*****************************************************************************************
 * NAME:         Joseph A Pfohl
-* DATE:         4/26/2017
-* ASSIGNMENT:   Assignment #3 - Unit Tests
-* DESCRIPTION:  Unit tests for Feast()
+* DATE:         05/26/2017
+* ASSIGNMENT:   Assignment #5 - Unit Tests for partner's code
+* DESCRIPTION:  Unit tests for feast implementation in cardEffect()
 *****************************************************************************************/
 
 #include "../../dominion/dominion.h"

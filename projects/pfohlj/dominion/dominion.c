@@ -348,6 +348,11 @@ int fullDeckCount(int player, int card, struct gameState *state)
     int i;
     int count = 0;
 
+    if (player < 0 || player > 4 || card > treasure_map)
+    {
+        return -1;
+    }
+
     for (i = 0; i < state->deckCount[player]; i++)
     {
         if (state->deck[player][i] == card)
